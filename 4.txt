@@ -1,0 +1,34 @@
+# Como deletar os recursos dos múltiplos provedores de Cloud
+
+**Primeiro passo - Excluir todos os objetos do bucket**
+
+- Acesse a Console da AWS and abra o serviço do S3.
+- Selecione o seu bucket e clique em Empty.
+- Para confirmar a exclusão dos objetos, digite *permanently delete*.
+- Clique em Empty.
+
+**Primeiro passo concluído! 🎉**
+
+**Segundo passo - Atualize o instance deletion_protection de true para false**
+
+- Abra o arquivo tcb_gcp_database.tf disponível no diretório ~/mission1_pt/mission1/pt/terraform/ usando o Google Editor.
+- Na linha 11 do arquivo tcb_gcp_database.tf:
+    - Atualize de deletion_protection = “true” para deletion_protection = “false”
+    **Example:**
+        - Versão atual: deletion_protection = "true”
+        - Versão atualizada: deletion_protection = "false”
+        
+- Mude do Editor para Terminal
+- Execute os comandos para aplicar as mudanças feitas no arquivo do Terraform:
+
+```
+cd ~/mission1_pt/mission1/pt/terraform/
+
+terraform init
+terraform apply
+	***Digite o valor: yes***
+```
+
+Agora, você está pronto para excluir todos os recursos com o terraform destroy. 🚀
+
+- Execute o comando abaixo:
